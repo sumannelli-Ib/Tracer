@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      border: 2px solid rgba(53, 13, 231, 0.897);
+      background: #ccc
+    }
+
+    input[type=text],
+    input[type=textarea] {
+      text-align: center
+    }
+
+    .content {
+      text-align: center;
+      border: 2px solid rgba(139, 155, 153, 0.123);
+      width: 492px;
+      margin: 0 auto;
+      padding: 16px
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Profile</h2>
+  <form name ="form2">
+    <div class='content'>
+      <label for="firstname"><b>Firstname</b></label>
+      <input type="text" name="firstname" id="firstname"></br></br>
+      <label for="lastname"><b>Lastname</b></label>
+      <input type="text" name="lastname" id="lastname"></br></br>
+      <label for="address"><b>Address</b></label>
+      <textarea name="address" id="address"></textarea></br></br>
+      <button type="submit" onclick=savedata()>Submit</button>
+      
+    </div>
+  </form>
+<script>
+
+function savedata(){
+  var  x= document.forms["form2"];
+        var data={}
+        for(i=0;i<x.length;i++){
+            console.log(x.elements[i].outerHTML)
+            //console.log(x.elements[i].value)
+            
+            //data[htmlvar]=x.elements[i].value
+            data[x.elements[i].outerHTML]=x.elements[i].value
+            //data.push(x.elements[i].outerHTML)
+
+         /****   var s = '';
+            var o = getComputedStyle(x.elements[i]);
+            for(var i = 0; i < o.length; i++){
+                s+=o[i] + ':' + o.getPropertyValue(o[i])+';';
+            }
+            console.log(s)***/
+        }
+      alert(data)
+  var fname = document.getElementById("firstname").value;
+  var lname = document.getElementById("lastname").value;
+  var addr = document.getElementById("address").value;
+  
+  
+  var xmlhttp;
+  if (window.XMLHttpRequest){
+    xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+              alert(xmlhttp.responseText)
+
+        }
+      };
+
+
+    xmlhttp.open("POST", "http://localhost:8080/profile", true);
+    xmlhttp.setRequestHeader("Content-type", "application/json");
+    xmlhttp.send(JSON.stringify({ "firstname": fname, "lastname": lname , "address":addr,"data":data}));
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        input[type=text] {
+            text-align: center;
+            width: 20%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type=password] {
+            text-align: right;
+            width: 60px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center
+        }
+
+        button {
+
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            width: 500px;
+            border: #4CAF50;
+
+            text-align: center;
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Login Form</h2>
+
+    <form method="post" name="form1">
+
+
+        <div class="container" id="container">
+
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id ="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required></br></br>
+
+            
+            <button type="button" id="login_btn" onclick= login() >Login</button>
+            
+
+        </div>
+
+    </form>
+
+
+
+<script>
+    function click(btn) {
+        
+  console.log(btn);
+}
+   
+    function login(){
+
+        var  x= document.forms["form1"];
+        var data={}
+        for(i=0;i<x.length;i++){
+            console.log(x.elements[i].outerHTML)
+            //console.log(x.elements[i].value)
+            
+            //data[htmlvar]=x.elements[i].value
+            data[x.elements[i].outerHTML]=x.elements[i].value
+            //data.push(x.elements[i].outerHTML)
+
+         /****   var s = '';
+            var o = getComputedStyle(x.elements[i]);
+            for(var i = 0; i < o.length; i++){
+                s+=o[i] + ':' + o.getPropertyValue(o[i])+';';
+            }
+            console.log(s)***/
+        }
+        
+        
+
+
+
+
+
+        var usr = document.getElementById("uname");
+        var username = document.getElementById("uname").value;
+        var password = document.getElementById("psw").value;
+         let result = new Set();
+      
+               
+        //<button type="button" id="login_btn" onclick= "window.location.href ='Profile.html' " >Login</button>
+
+    
+        var xmlhttp ;
+        if (window.XMLHttpRequest)
+        {
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                
+                if(xmlhttp.responseText === "Login Success"){
+
+                    window.location.href="Profile.html"
+
+                }
+                else{
+
+                    alert("Invalid credentials")
+                }
+                //document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            }
+    };
+
+
+    xmlhttp.open("POST", "http://localhost:8080/login", true);
+    xmlhttp.setRequestHeader("Content-type", "application/json");
+    
+   
+
+    xmlhttp.send(JSON.stringify({"username": username, "password": password,"data":data }));
+        
+    }
+
+
+
+
+</script>
+
+</body>
+
+
+
+</html>
