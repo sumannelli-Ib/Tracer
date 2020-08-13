@@ -1,0 +1,10 @@
+2020-08-13 11:42:28.596  INFO 19220 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-13 11:42:30.378  INFO 19220 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-08-13 11:42:39.478  INFO 19220 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9078 ms
+2020-08-13 11:42:41.770  INFO 19220 --- [http-nio-8080-exec-1] com.monitoring.aspects.Tracer_IB         : ********************************************
+2020-08-13 11:42:44.020  INFO 19220 --- [http-nio-8080-exec-1] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:4, serverValue:10}] to localhost:27017
+2020-08-13 11:42:44.785  INFO 19220 --- [http-nio-8080-exec-1] com.monitoring.aspects.Tracer_IB         : **********************************
+2020-08-13 11:51:27.047  INFO 19220 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-08-13 11:51:27.048  INFO 19220 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-08-13 11:51:29.411  INFO 19220 --- [RMI TCP Connection(4)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-13 11:51:29.503  INFO 19220 --- [RMI TCP Connection(4)-127.0.0.1] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:4, serverValue:10}] to localhost:27017 because the pool has been closed.
